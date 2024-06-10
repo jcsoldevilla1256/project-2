@@ -133,7 +133,11 @@
   position: absolute;
   width: 100%;
   height: 100%;
+  /* backface vis. and user select 
+  added for click event purpose in javascript  */
   backface-visibility: hidden;
+  user-select: none;
+  pointer-events: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,8 +148,9 @@
   transform: rotateY(180deg);
 }
 
-.card:hover {
+/* every flip class will rotate 180 degrees  */
+.card.flip { 
   transform: rotateY(180deg);
-}
+} 
 
 /* End of card rotating effect  */

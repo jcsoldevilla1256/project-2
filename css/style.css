@@ -128,7 +128,7 @@
 
 .cards .card {
   position: relative;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d !important;
   transition: transform 0.25s;
 }
 

@@ -4,6 +4,7 @@ const cards = document.querySelectorAll(".card");
 let matchedCard = 0;
 let cardOne, cardTwo; //declare cardOne and cardTwo
 let disableDeck = false;
+let matchAttempt = 16;
 
 function flipCard(e) {
     let clickedCard = e.target; //getting user clicked card
@@ -34,6 +35,9 @@ function matchCards(img1, img2) {
         cardOne = cardTwo = ""; //setting both card value to blank
         return disableDeck = false;
     }
+
+    // set attempt
+    matchAttempt --;
     
     // if two cards not matched
     setTimeout ( () => {
@@ -69,9 +73,11 @@ function shuffleCard() {
 }
 
 shuffleCard();
+console.log(matchAttempt);
 
 // add click event to all card element 
 cards.forEach(card => {
+    // card.classList.add("flip")
     card.addEventListener("click", flipCard);
 });
 

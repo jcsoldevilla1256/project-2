@@ -24,10 +24,18 @@ function matchCards(img1, img2) {
         return console.log("card matched");
     }
     
+    // if two cards not matched
     setTimeout ( () => {
+        // add shake class after 400ms
         cardOne.classList.add("shake");
         cardTwo.classList.add("shake");
     }, 400);
+
+    setTimeout ( () => {
+        // remove shake and flip card after 1200ms
+        cardOne.classList.remove("shake", "flip");
+        cardTwo.classList.remove("shake", "flip");
+    }, 1200);
 }
 
 // add click event to all card element 

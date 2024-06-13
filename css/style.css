@@ -127,12 +127,12 @@
 }
 
 .cards .card {
+  transition: transform 0.25s;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform 0.25s;
 }
 
-.card .front, .card .back {
+.cards .card .view {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -151,9 +151,12 @@
   transform: rotateY(180deg);
 }
 
-/* every flip class will rotate 180 degrees  */
-.card.flip { 
+.card.flip .front{ 
   transform: rotateY(180deg);
+} 
+
+.card.flip .back{ 
+  transform: rotateY(0deg);
 } 
 
 /* End of card rotating effect  */
@@ -180,6 +183,7 @@
   }
 }
 
+/* fix shake effect showing front animation */
 
 
-
+/* Apply the shake effect to front and back separately */

@@ -6,6 +6,7 @@ let cardOne, cardTwo; //declare cardOne and cardTwo
 let disableDeck = false;
 let matchAttempt = 16;
 
+
 function flipCard(e) {
     let clickedCard = e.target; //getting user clicked card
     if (clickedCard !== cardOne && !disableDeck) {
@@ -14,6 +15,7 @@ function flipCard(e) {
         // return cardOne value to clickedCard
         return cardOne = clickedCard;
     }
+
     cardTwo = clickedCard;
     disableDeck = true;
     let cardOneImg = cardOne.querySelector("Img").src,
@@ -38,7 +40,13 @@ function matchCards(img1, img2) {
 
     // set attempt
     matchAttempt --;
-    
+    attemptsLeft();
+
+    //test
+    if (matchAttempt == 0){
+        console.log("you lose");
+    }
+
     // if two cards not matched
     setTimeout ( () => {
         // add shake class after 400ms
@@ -72,8 +80,12 @@ function shuffleCard() {
     });
 }
 
-shuffleCard();
-console.log(matchAttempt);
+shuffleCard(); //call shuffle
+attemptsLeft(); //call attempt
+
+function attemptsLeft(){
+    document.querySelector(".attempts").innerHTML = matchAttempt;
+};
 
 // add click event to all card element 
 cards.forEach(card => {

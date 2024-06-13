@@ -127,12 +127,12 @@
 }
 
 .cards .card {
-  transition: transform 0.25s;
   position: relative;
   transform-style: preserve-3d;
 }
 
 .cards .card .view {
+  transition: transform 0.25s;
   position: absolute;
   width: 100%;
   height: 100%;

@@ -148,7 +148,7 @@ function resetButton() {
     document.querySelector(".modal").innerHTML = "";
     setTimeout ( () => {
         return shuffleCard();
-    }, 1000);
+    }, 700);
 };
 
 // add click event to all card element 

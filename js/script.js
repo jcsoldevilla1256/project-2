@@ -28,9 +28,7 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++; // increment matched value by 1
         if (matchedCard == 8){
-            setTimeout ( () => {
-                return shuffleCard();
-            }, 1000); // calling shuffle card function after 1s
+            winModal(); // calling shuffle card function after 1s
         };
         cardOne.removeEventListener("click", flipCard);
         cardTwo.removeEventListener("click", flipCard);
@@ -44,7 +42,7 @@ function matchCards(img1, img2) {
 
     //test create modal
     if (matchAttempt == 0){
-
+        loseModal();
     }
 
     // if two cards not matched
@@ -64,6 +62,9 @@ function matchCards(img1, img2) {
 }
 
 function shuffleCard() {
+    console.log("shuffled");
+    matchAttempt = 16;
+    attemptsLeft();
     matchedCard = 0;
     cardOne = cardTwo = "";
     disableDeck = false;
@@ -103,13 +104,13 @@ function winModal() {
           <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
             <h3 class="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Match Success!</h3>
             <div class="mt-2">
-              <p class="text-sm text-gray-500">You've matched all the cards less than given attempts</p>
+              <p class="text-sm text-gray-500">You have matched all the cards</p>
             </div>
           </div>
         </div>
       </div>
       <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-        <button type="button" class="modalButton inline-flex w-full justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 sm:ml-3 sm:w-auto">Play again</button>
+        <button onclick="resetButton()" type="button" class="modalButton inline-flex w-full justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 sm:ml-3 sm:w-auto">Play again</button>
       </div>
     </div>
   </div>
@@ -136,12 +137,21 @@ function loseModal() {
         </div>
       </div>
       <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-        <button type="button" class="modalButton inline-flex w-full justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 sm:ml-3 sm:w-auto">Play again</button>
+        <button onclick="resetButton()" type="button" class="modalButton inline-flex w-full justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 sm:ml-3 sm:w-auto">Play again</button>
       </div>
     </div>
   </div>
 </div>`;
 }
+
+function resetButton() {
+    document.querySelector(".modal").innerHTML = "";
+    setTimeout ( () => {
+        return shuffleCard();
+    }, 1000);
+};
+
+winModal();
 
 // add click event to all card element 
 cards.forEach(card => {

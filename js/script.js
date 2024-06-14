@@ -42,9 +42,9 @@ function matchCards(img1, img2) {
     matchAttempt --;
     attemptsLeft();
 
-    //test
+    //test create modal
     if (matchAttempt == 0){
-        console.log("you lose");
+
     }
 
     // if two cards not matched
@@ -83,9 +83,65 @@ function shuffleCard() {
 shuffleCard(); //call shuffle
 attemptsLeft(); //call attempt
 
+// attempt function
 function attemptsLeft(){
     document.querySelector(".attempts").innerHTML = matchAttempt;
 };
+
+// modal function
+function winModal() {
+    document.querySelector(".modal").innerHTML += `<div id="modalContainer" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  
+  <div class="fixed inset-0 z-10 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+      <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+        <div class="sm:flex sm:items-start">
+          <div class="mx-auto flex h-16 max-w-16 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 sm:mx-0 sm:h-10 sm:w-10">
+            <p class="text-4xl">🥳</p>
+          </div>
+          <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+            <h3 class="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Match Success!</h3>
+            <div class="mt-2">
+              <p class="text-sm text-gray-500">You've matched all the cards less than given attempts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+        <button type="button" class="modalButton inline-flex w-full justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 sm:ml-3 sm:w-auto">Play again</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
+
+function loseModal() {
+    document.querySelector(".modal").innerHTML += `<div id="modalContainer" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+  
+  <div class="fixed inset-0 z-10 flex items-center justify-center p-4 overflow-y-auto">
+    <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+      <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+        <div class="sm:flex sm:items-start">
+          <div class="mx-auto flex h-16 max-w-16 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+            <p class="text-4xl">🚩</p>
+          </div>
+          <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+            <h3 class="text-xl font-semibold leading-6 text-gray-900" id="modal-title">Match Failed</h3>
+            <div class="mt-2">
+              <p class="text-sm text-gray-500">You can do better next time</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+        <button type="button" class="modalButton inline-flex w-full justify-center rounded-md bg-sky-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 sm:ml-3 sm:w-auto">Play again</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+}
 
 // add click event to all card element 
 cards.forEach(card => {

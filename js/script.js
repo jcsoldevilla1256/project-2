@@ -151,8 +151,6 @@ function resetButton() {
     }, 1000);
 };
 
-winModal();
-
 // add click event to all card element 
 cards.forEach(card => {
     // card.classList.add("flip")
